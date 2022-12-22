@@ -51,11 +51,15 @@ nav{
   max-height: 130px;
 }
 
-.texte{
+.recettePrincipal{
   margin-top: 30px;
   padding: 25px;
+  width: 100px;
+  height: auto;
   grid-area: middle;
+  text-align: center;
   text-align: justify;  /*Le mettre en justify nous permet d'avoir un texte qui commence et fini exactement au même endroit à chaque ligne, pour que tout soit correctement organisé*/
+  font-size: 10px;
   border: solid;
   border-color: #3d434f;
   border-radius: 10px;
