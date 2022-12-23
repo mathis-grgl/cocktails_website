@@ -1,0 +1,204 @@
+/* STYLE GÉNÉRAL APPLICABLE SUR TOUTES LES PAGES */
+
+body{
+  background-color: #282c34;
+  font-family: Trebuchet MS, sans-serif;
+  font-size: 15px;
+  margin: 0;
+  color: #fff;
+}
+
+a{
+  text-decoration: none;
+  color: #fff;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+.recherche{
+  text-align : center;
+  border-radius: 15px;
+  background-color: transparent;
+  width: 30%;
+  height: 50%;
+  color: #fff;
+  border: 1px solid #ccc;
+  padding: 0 10px;
+}
+
+.recherche:focus{
+  border-bottom:1px solid rgba(255,255,255,.5);
+}
+
+.logo{
+  margin-left: 3%;
+}
+
+.footer{
+  background-color: #1d2025;
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  bottom:0px;
+}
+
+#centre{
+ font-weight: bold;
+}
+
+.italic{
+  font-style: italic;
+}
+
+.header{
+  background-color: #1d2025;
+  width: 100%;
+  position: fixed;  /*Ici le position fixed sert à garder l'image à l'endroit que l'on veut,avec les proportions voulues, il permet aussi à chaque page de garder cette position*/
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+
+/* PAGE ACCUEIL/ SECTION PREMIÈRE PAGE */
+
+.contenu{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 20px;
+  padding-top: 60px;
+  padding-right : 30px;
+  padding-left : 30px;
+  padding-bottom : 60px;
+}
+
+.blockCocktail{
+  /*Gestion de l'alignement du block*/
+  margin-top: 30px;
+  margin-left: 30px;
+  padding: 25px;
+  padding-bottom: 10px;
+
+  /*Gestion du block*/
+  width: 150px;
+  height: auto;
+  background-color: #282c34;
+  transition: background-color 0.2s ease;
+
+  /*Gestion du texte*/
+  text-align: center;
+  font-size: 10px;
+
+  /*Gestion des bordures du block*/
+  border: solid;
+  border-color: #3d434f;
+  border-radius: 10px;
+}
+
+.blockCocktail:hover{
+  background-color: #000c34;
+}
+
+.aBlockCocktail{
+  transition: transform 0.2s ease;
+}
+
+.aBlockCocktail:hover{
+  text-decoration: none;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.imageCocktail{
+  width: 100px;
+  height:100px;
+  border:solid;
+  border-color:transparent;
+  border-radius: 5px;
+}
+
+/* PAGE "STATISTIQUES" / SECTION TABLEAU */
+
+
+nav{
+  margin: 30px 0px 0px 15px;
+  border: solid;
+  border-color: #3d434f;
+  background-color: #1d2025;
+  font-size: 20px;
+  padding: 30px;
+  font-weight: bold;
+  grid-area: left;
+  border-radius: 10px;  /*Cette balise permet à notre border d'avoir un effet plutôt arrondi, et pas rectangulaire*/
+  max-height: 130px;
+}
+
+.tableau{
+  margin-top: 30px;
+  padding: 25px;
+  grid-area: middle;
+  text-align: center;
+  border: solid;
+  border-color: #3d434f;
+  border-radius: 10px;
+}
+table{
+  background-color: #1d2025;
+  width: 50ex;
+  color: white;
+  border: solid;
+  border-color: #3d434f;
+  border-radius: 10px;
+  margin: auto;
+  grid-area: middle;
+
+}
+
+/* PAGE "RECETTE" */
+.contenuRecette {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 85vh;
+  margin-left: 30px;
+}
+
+.imageRecette {
+  flex: 1;
+  text-align : center;
+}
+
+.imageRecette img{
+  border:solid;
+  border-color:transparent;
+  border-radius: 30px;
+  width: 400px;
+  height: auto;
+}
+
+.texteRecette {
+  flex: 2;
+  margin-left : 100px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.boutonAjouterPanier{
+ flex: 2;
+ margin-top: 40px;
+ background-color: #ffc107;
+ color: #ffffff;
+ font-size: 16px;
+ font-weight: bold;
+ padding: 10px 20px;
+ border: 0;
+ border-radius: 4px;
+ cursor: pointer;
+}
