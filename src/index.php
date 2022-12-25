@@ -13,7 +13,7 @@
   <div class="header">
     <div class="logo"><a href=index.php><img src="../Photos/cocktail_logo.png" height="52" width="44"></a></div>
       <input id="recherche" class="recherche" onkeyup="" type="text" name="recherche" placeholder="Rechercher dans le site">
-      <a href="panier.html">Panier</a>
+      <a href="panier.php">Panier</a>
       <div class="logo"><a href=account.php?page=1><img src="../Photos/account.png" height="44" width="44"></a></div>
     <div class="headerend"></div>
   </div>

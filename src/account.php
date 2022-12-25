@@ -35,63 +35,63 @@
 
     <?php require 'Donnees.inc.php'; 
     $noPage = 1;
-    $stylePseudo ="";
-    $stylePassword ="";
     $nbPseudo = 0;
-    $pseudo = "";
     $nbPassword = 0;
+    $pseudo = "";
     $password = "";
     $cookie = 0;
+    $stylePseudo ="";
+    $stylePassword ="";
+    $styleRed = "style = \"background-color: RED;\"";
 
-
-    if(isset($_GET["page"])){
-        $noPage = $_GET["page"];
-    }
+    if(isset($_GET["page"])) $noPage = $_GET["page"];
 
     if(isset($_COOKIE['account'])){
-        $cookie = 1;
-        $identifiantCookie = $_COOKIE['account'];
-        $position = strpos($identifiantCookie, ":");
-        $pseudo = substr($identifiantCookie, 0, $position);
-        //$password = substr($identifiantCookie,$position+1,strlen($identifiantCookie));
+      $cookie = 1;
+      $identifiantCookie = $_COOKIE['account'];
+      $position = strpos($identifiantCookie, ":");
+      $pseudo = substr($identifiantCookie, 0, $position);
+      //$password = substr($identifiantCookie,$position+1,strlen($identifiantCookie));
 
     } else {
 
-    if(isset($_POST["submit"])){
+      if(isset($_POST["submit"])){
+        $usernamePOST = $_POST['username'];
+        $passwordPOST = $_POST['password'];
 
+        $mysqli = mysqli_connect("projetwebs5","root","" , "Cocktails");
+        
+        $queryPseudo = "SELECT pseudo FROM utilisateur WHERE pseudo='".$usernamePOST."';";
+        $queryPassword = "SELECT password FROM utilisateur WHERE pseudo='".$usernamePOST."' AND password='".$passwordPOST."';";
 
-      $mysqli = mysqli_connect("projetwebs5","root","" , "Cocktails");
-      
-      $queryPseudo = "SELECT pseudo FROM utilisateur WHERE pseudo='".$_POST['username']."';";
-      $queryPassword = "SELECT password FROM utilisateur WHERE pseudo='".$_POST['username']."' AND password='".$_POST['password']."';";
-      //echo $query;
-      $resultat = $mysqli->query($queryPseudo);
-      while ($row = $resultat->fetch_assoc()){
-        $nbPseudo++;
-        $pseudo = $row['pseudo'];
-      }
+        $resultat = $mysqli->query($queryPseudo);
+        while ($row = $resultat->fetch_assoc()){
+          $nbPseudo++;
+          $pseudo = $row['pseudo'];
+        }
 
-      $resultat = $mysqli->query($queryPassword);
-      while ($row = $resultat->fetch_assoc()){
-        $nbPassword++;
-        $password = $row['password'];
-      }
+        $resultat = $mysqli->query($queryPassword);
+        while ($row = $resultat->fetch_assoc()){
+          $nbPassword++;
+          $password = $row['password'];
+        }
 
-      if($noPage ==1) if($nbPseudo ==1){
-        $stylePseudo = "value=\"".$pseudo."\"";
-        if($nbPassword ==1){
+        if($noPage ==1) if($nbPseudo ==1){
+          $stylePseudo = "value=\"".$pseudo."\"";
+          if($nbPassword ==1){
             $identifiant = $pseudo.":".$password;
             setcookie("account",$identifiant,  time() + 3600);
-        } else {$stylePassword = "style = \"background-color: RED;\"";
+          } else {
+            $stylePassword = "style = \"background-color: RED;\"";
+          }
+        } else {
+          $stylePseudo = $styleRed;
+          $stylePassword = $styleRed;
         }
-      } else {
-        $stylePseudo = "style = \"background-color: RED;\"";
-        $stylePassword = "style = \"background-color: RED;\"";
-      }
 
-      if($noPage ==2){
-        if($nbPseudo ==1) $stylePseudo = "style = \"background-color: RED;\"";
-        else{
+        if($noPage ==2){
+          if($nbPseudo ==1) $stylePseudo = $styleRed;
+          else{
             $pseudo = $_POST['username'];
             $password = $_POST['password'];
             $queryInsertionUser = "INSERT INTO utilisateur(pseudo,password) VALUES('".$pseudo."','".$password."');";
@@ -99,10 +99,10 @@
             $identifiant = $pseudo.":".$password;
             setcookie("account",$identifiant,  time() + 3600);
             $nbPassword = 2;
+          }
         }
+        $mysqli->close();
       }
-      $mysqli->close();
-    }
     }
     ?>
 
@@ -113,12 +113,12 @@
         $cookie = <?php echo $cookie;?>;
         
         if($cookie == 1 && $noPage ==1){
-            window.open("?page=0","_self");
+          window.open("?page=0","_self");
         } 
 
         if($noPage == 3){
-            window.open("?page=1","_self");
-            document.cookie = "account= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"
+          window.open("?page=1","_self");
+          document.cookie = "account= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"
         }
 
         if($noPage ==1){
@@ -129,14 +129,14 @@
             }
         }
         if ($noPage == 2 && $nbConnecte ==0 && $nbPassword == 2){
-            window.open("?page=0","_self");
+          window.open("?page=0","_self");
         }
     </script>
 
   <div class="header">
     <div class="logo"><a href=index.php><img src="../Photos/cocktail_logo.png" height="52" width="44"></a></div>
       <input id="recherche" class="recherche" onkeyup="" type="text" name="recherche" placeholder="Rechercher dans le site">
-      <a href="panier.html">Panier</a>
+      <a href="panier.php">Panier</a>
       <div class="logo"><a href=account.php?page=1><img src="../Photos/account.png" height="44" width="44"></a></div>
     <div class="headerend"></div>
   </div>
