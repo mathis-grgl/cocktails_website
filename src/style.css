@@ -124,44 +124,12 @@ a:hover{
   border-radius: 5px;
 }
 
-/* PAGE "STATISTIQUES" / SECTION TABLEAU */
 
 
-nav{
-  margin: 30px 0px 0px 15px;
-  border: solid;
-  border-color: #3d434f;
-  background-color: #1d2025;
-  font-size: 20px;
-  padding: 30px;
-  font-weight: bold;
-  grid-area: left;
-  border-radius: 10px;  /*Cette balise permet à notre border d'avoir un effet plutôt arrondi, et pas rectangulaire*/
-  max-height: 130px;
-}
-
-.tableau{
-  margin-top: 30px;
-  padding: 25px;
-  grid-area: middle;
-  text-align: center;
-  border: solid;
-  border-color: #3d434f;
-  border-radius: 10px;
-}
-table{
-  background-color: #1d2025;
-  width: 50ex;
-  color: white;
-  border: solid;
-  border-color: #3d434f;
-  border-radius: 10px;
-  margin: auto;
-  grid-area: middle;
-
-}
 
 /* PAGE "RECETTE" */
+
+
 .contenuRecette {
   display: flex;
   align-items: center;
@@ -191,7 +159,6 @@ table{
 }
 
 .boutonAjouterPanier{
- flex: 2;
  margin-top: 40px;
  background-color: #ffc107;
  color: #ffffff;
@@ -201,4 +168,76 @@ table{
  border: 0;
  border-radius: 4px;
  cursor: pointer;
+}
+
+.contenuCompte input[type='submit']:hover {
+  background-color:  #ffb507;
+}
+
+.toastAjouterPanier{
+  font-size: 14px;
+  padding: 10px;
+  text-align: center;
+  display: none;
+}
+
+
+
+
+/* PAGE "COMPTE" */
+
+.contenuCompte{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 30vh;
+  margin-left: 30px;
+  text-align: center;
+}
+
+.formConnexion{
+  flex:1;
+}
+
+.inscription{
+  flex:2;
+}
+
+.contenuCompte input {
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: transparent;
+  border-radius: 4px;
+}
+
+.contenuCompte input[type='submit'] {
+  width : 100%;
+  background-color:  #ffc107;
+  color: white;
+  border: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.contenuCompte input[type='submit']:hover {
+  background-color:  #ffb507;
+}
+
+.contenuCompte input:focus {
+  border-radius : 6px;
+}
+
+.deconnexion{
+  flex : 1;
+  margin-top: 40px;
+  background-color: #ffc107;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
 }

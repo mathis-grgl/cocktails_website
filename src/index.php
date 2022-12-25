@@ -14,25 +14,27 @@
     <div class="logo"><a href=index.php><img src="../Photos/cocktail_logo.png" height="52" width="44"></a></div>
       <input id="recherche" class="recherche" onkeyup="" type="text" name="recherche" placeholder="Rechercher dans le site">
       <a href="panier.html">Panier</a>
-      <div class="logo"><a href=account.html><img src="../Photos/account.png" height="44" width="44"></a></div>
+      <div class="logo"><a href=account.php?page=1><img src="../Photos/account.png" height="44" width="44"></a></div>
     <div class="headerend"></div>
   </div>
 
   <div class="contenu">
-   <?php require 'Donnees.inc.php';
-   $cpt = 0;
-   for($i=0 ; $i < count($Recettes); $i++){
-    $titreCocktail = $Recettes[$i]['titre'];
-    $definitiveUrl = "../Photos/default_cocktail.png";
+    <?php require 'Donnees.inc.php';
 
-    $urlCocktail = $titreCocktail;
-    $urlCocktail = str_replace(" ","_",$urlCocktail);
-    preg_match("/^[^(]+/", $urlCocktail, $match);
-    $urlCocktail = $match[0];
-    $urlCocktail = iconv('UTF-8', 'ASCII//TRANSLIT', $urlCocktail);
-    $urlCocktail = preg_replace("/[^a-zA-Z0-9-_]/", "", $urlCocktail);
-    $urlCocktail = rtrim($urlCocktail, "_");
-    $urlCocktail = "../Photos/".$urlCocktail.".jpg";
+    $mysqli = mysqli_connect("projetwebs5","root","" , "Cocktails");
+    
+    
+    for($i=0 ; $i < count($Recettes); $i++){
+      
+      $titreCocktail = $Recettes[$i]['titre'];
+      $urlCocktail = "";
+      $definitiveUrl = "../Photos/default_cocktail.png";
+      
+      $query = "SELECT url FROM Cocktail WHERE idCocktail=".$i.";";
+      $resultat = $mysqli->query($query);
+      while ($row = $resultat->fetch_assoc()){
+        $urlCocktail = $row['url'];
+      }
 
     if (file_exists($urlCocktail)) $definitiveUrl = $urlCocktail;
 
@@ -43,6 +45,7 @@
             </div>
           </a>";
     }
+    $mysqli->close();
       ?>
   </div>
 
